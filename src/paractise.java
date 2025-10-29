@@ -1,15 +1,14 @@
-import java.util.Arrays ;
 public class paractise {
     public static void main(String [] args){
-        int arr [] = {11,22,32,1,2,11,12,32,22};
-
-        Arrays.sort(arr);
-        for(int i = 0 ; i < arr.length-1 ; i++){
-            System.out.println("After Sorted  :" + arr[i]);
-            if ( arr[i] % 2 != 0){
-            System.out.print(arr[i] + " ");
+        int arr [] = {1,2,3,4,5,67,7};
+        int prefix [] = new int [arr.length];
+        prefix [0] = arr[0] ;
+        for(int i = 1 ; i < arr.length ; i++){
+            prefix[i] = prefix[i - 1] + arr[i] ;
         }
+        System.out.println("prefix Arrays :");
+        for(int num : prefix){
+            System.out.print(num + " ");
         }
-        System.out.print(arr[arr.length-1]);
     }
 }
