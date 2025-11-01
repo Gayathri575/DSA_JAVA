@@ -2,7 +2,7 @@ package DSAStrings;
 
 public class ChangeCase {
     public static void main(String[] args) {
-        String str = "TrishaLove";
+        String str = "gaYatHiRI";
         String result = "";
 
         for (int i = 0; i < str.length(); i++) {
