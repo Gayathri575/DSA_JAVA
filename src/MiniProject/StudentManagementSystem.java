@@ -1,80 +1,91 @@
-package MiniProject ;
+package MiniProject;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class school {
-    private static ArrayList <xB> storage = new ArrayList<>();
-    static class xB {
-        private  String name  ;
-        private String id ;
-        private int phNo ;
+class pallikoodam {
 
-        xB(String name , String id , int phNo){
-            this.name = name ;
-            this.id = id ;
-            this.phNo = phNo;
+    private static ArrayList<manavan> manavaaa = new ArrayList<>();
+
+    static class manavan {
+        private String name;
+        private String id;
+        private int age;
+        private double fees;
+
+        manavan(String name, String id, int age, double fees) {
+            this.name = name;
+            this.id = id;
+            this.age = age;
+            this.fees = fees;
         }
-        public String toString ( ){
-            return "Name :" + name +" "+"Roll No :"+id+" "+"Phone Num"+ phNo ;
+
+        public String toString() {
+            return "Name: " + name + " | Roll No: " + id + " | Age: " + age + " | Fees: " + fees;
         }
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int Choice = 0;
 
+        while (Choice != 3) {
+            displayMenu();
 
-        while ( Choice != 3){
-
-            displayOptions();
             System.out.print("Enter choice: ");
             Choice = sc.nextInt();
             sc.nextLine();
 
-            switch(Choice){
-                case 1 :
-                    addDetails(sc);
-                    break;
-                case 2:
-                    viewDetails();
-                    break;
-                case 3 :
-                    System.out.println("Exited");
-                    break;
-                default :
-                    System.out.println("Invalid Number");
+            switch (Choice) {
+                case 1: addDet(sc); break;
+                case 2: viewDet(); break;
+                case 3: System.out.println("Exiting..."); break;
+                default: System.out.println("Invalid Selection");
             }
         }
-    }
-    private static void displayOptions() {
-        System.out.println("1.Add");
-        System.out.println("2.View");
-        System.out.println("3.Exit");
+
+        sc.close();
     }
 
-    private static void viewDetails() {
-        for (xB bSection : storage){
-            System.out.println(bSection);
+    private static void viewDet() {
+        if (manavaaa.isEmpty()) {
+            System.out.println("No Manavargal Found!");
+            return;
+        }
+        for (manavan mn : manavaaa) {
+            System.out.println(mn);
         }
     }
 
-    private static void addDetails(Scanner sc) {
+    private static void addDet(Scanner sc) {
 
-        System.out.println("Enter name");
+        System.out.print("Enter Name: ");
         String name = sc.nextLine();
 
-        System.out.println("Enter RollNo");
-        String id = sc.next();
+        System.out.print("Enter Roll Number: ");
+        String id = sc.nextLine();
 
-        System.out.println("Enter phNo");
-        int phNo = sc.nextInt();
-        sc.nextLine();
+        System.out.print("Enter Age: ");
+        int age = sc.nextInt();
 
-        xB sch = new xB(name, id, phNo);
-        storage.add(sch);
+        System.out.print("Enter Fees Amount (5000): ");
+        double fees = sc.nextDouble();
 
-        System.out.println("Details Added Successfully");
+        if (fees != 5000) {
+            System.out.println("Invalid Fees Amount!");
+            return;
+        }
 
+        manavan mn = new manavan(name, id, age, fees);
+        manavaaa.add(mn);
 
+        System.out.println("Student Added Successfully!");
     }
 
+    private static void displayMenu() {
+        System.out.println("\n--- Pallikoodam Menu ---");
+        System.out.println("1. Add Manavan");
+        System.out.println("2. View Manavargal Details");
+        System.out.println("3. Exit");
+    }
 }
